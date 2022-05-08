@@ -8,7 +8,9 @@ const interviewSchema = new mongoose.Schema(
       trim: true,
       maxlength: 50,
     },
-    questions: String,
+    questions: {
+      type: Array,
+    },
     createdBy: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: "user",

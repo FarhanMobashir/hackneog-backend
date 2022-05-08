@@ -70,7 +70,8 @@ export const removeOne = (model) => async (req, res) => {
     if (!removed) {
       return res.status(400).end();
     }
-    return res.status(200).json({ data: removed });
+    let remaining = await model.find({});
+    return res.status(200).json({ data: remaining });
   } catch (err) {}
 };
 
