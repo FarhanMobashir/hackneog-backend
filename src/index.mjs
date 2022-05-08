@@ -1,16 +1,13 @@
-import express from "express";
+import express, { urlencoded, json } from "express";
 import morgan from "morgan";
 import mongoose from "mongoose";
-import pkg from "body-parser";
-const { json, urlencoded } = pkg;
 import cors from "cors";
-import noteRouter from "./resources/note/note.router.mjs";
 import dotenv from "dotenv";
 import { protect } from "./auth.mjs";
 import { signup } from "./auth.mjs";
 import { signin } from "./auth.mjs";
+import interviewRouter from "./resources/interviews/interview.router.mjs";
 const app = express();
-const port = 3000;
 dotenv.config();
 app.disable("x-powered-by");
 
@@ -23,7 +20,7 @@ app.post("/signup", signup);
 app.post("/signin", signin);
 
 // app.use("/api", protect);
-app.use("/api/note", protect, noteRouter);
+app.use("/api/interview", protect, interviewRouter);
 
 mongoose.connect(process.env.MONGO_URI).then((data) => {
   console.log("mongo connected");

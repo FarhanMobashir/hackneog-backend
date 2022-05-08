@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const noteSchema = new mongoose.Schema(
+const interviewSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -8,7 +8,7 @@ const noteSchema = new mongoose.Schema(
       trim: true,
       maxlength: 50,
     },
-    notes: String,
+    questions: String,
     createdBy: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: "user",
@@ -18,4 +18,4 @@ const noteSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const Note = mongoose.model("note", noteSchema);
+export const Interview = mongoose.model("interview", interviewSchema);
